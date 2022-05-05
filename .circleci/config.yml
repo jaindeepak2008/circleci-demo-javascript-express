@@ -1,3 +1,5 @@
+context: SonarCloud
+
 version: 2.1
 
 workflows:
