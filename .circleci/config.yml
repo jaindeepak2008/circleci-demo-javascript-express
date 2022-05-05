@@ -1,10 +1,18 @@
 version: 2.1
 
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3
+
 workflows:
   version: 2
   main-workflow:
     jobs:
       - build
+
+      - SonarCloud-job
+          context: *SonarCloud
+          requires:
+            - build
 
 jobs:
   build:
@@ -32,6 +40,7 @@ jobs:
       - run:
           name: code-coverage
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      - sonarcloud/scan
       - store_artifacts:
           path: test-results.xml
           prefix: tests
