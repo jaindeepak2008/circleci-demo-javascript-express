@@ -68,3 +68,13 @@ test('calling toggleAddPostSection dispatches toggleAddPost', t => {
   t.truthy(dispatch.calledOnce);
   t.truthy(dispatch.calledWith(toggleAddPost()));
 });
+
+test('calling toggleAddPostSection dispatches toggleAddPost', t => {
+  const wrapper = shallow(
+    <App {...props} />
+  );
+
+  wrapper.instance().toggleAddPostSection();
+  t.truthy(dispatch.calledOnce);
+  t.truthy(dispatch.calledWith(toggleAddPost()));
+});
