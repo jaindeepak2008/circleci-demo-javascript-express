@@ -11,7 +11,7 @@ workflows:
           context: SonarCloud
 
 orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.3
+  sonarcloud: sonarsource/sonarcloud@1.0.3w
 
 jobs:
   build:
