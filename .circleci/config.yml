@@ -6,7 +6,7 @@ workflows:
     jobs:
       - build
       - sonarcloud-verify:
-          context: sonarcloud
+          context: SonarCloud
 
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.3
