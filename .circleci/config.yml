@@ -49,7 +49,7 @@ jobs:
 
   sonarcloud-verify:
     docker:
-      - image: sonarsource/sonarcloud-scan:1.4.0
+      - image: 'node:latest'
     steps:
       - checkout
       - sonarcloud/scan
