@@ -22,6 +22,7 @@ test('renders properly', t => {
     <App {...props} />
   );
 
+  // t.is(wrapper.find('Helmet').length, 1);
   t.is(wrapper.find('Header').length, 1);
   t.is(wrapper.find('Footer').length, 1);
   t.is(wrapper.find('Header').prop('toggleAddPost'), wrapper.instance().toggleAddPostSection);
@@ -56,6 +57,16 @@ test('calls componentDidMount', t => {
 
   t.truthy(App.prototype.componentDidMount.calledOnce);
   App.prototype.componentDidMount.restore();
+});
+
+test('calling toggleAddPostSection dispatches toggleAddPost', t => {
+  const wrapper = shallow(
+    <App {...props} />
+  );
+
+  wrapper.instance().toggleAddPostSection();
+  t.truthy(dispatch.calledOnce);
+  t.truthy(dispatch.calledWith(toggleAddPost()));
 });
 
 test('calling toggleAddPostSection dispatches toggleAddPost', t => {
