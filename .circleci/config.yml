@@ -8,8 +8,11 @@ workflows:
   main-workflow:
     jobs:
       - build
-      - SonarCloud
+
+      - SonarCloud-job
           context: SonarCloud
+          requires:
+            - build
 
 jobs:
   build:
