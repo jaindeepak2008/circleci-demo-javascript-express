@@ -1,3 +1,5 @@
+context: SonarCloud
+
 version: 2.1
 
 workflows:
@@ -5,6 +7,11 @@ workflows:
   main-workflow:
     jobs:
       - build
+      - sonarcloud-verify:
+          context: SonarCloud
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3
 
 jobs:
   build:
@@ -40,3 +47,10 @@ jobs:
           prefix: coverage
       - store_test_results:
           path: test-results.xml
+
+  sonarcloud-verify:
+    docker:
+      - image: 'node:latest'
+    steps:
+      - checkout
+      - sonarcloud/scan
